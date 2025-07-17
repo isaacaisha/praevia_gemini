@@ -1,0 +1,39 @@
+# /home/siisi/praevia_gemini/docker-compose.prod.yml
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    env_file: 
+      - .env.prod
+    environment:
+      - ENVIRONMENT=prod
+    volumes:
+      - pravia_gemini_data_prod:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  praevia_gemini_prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - ENVIRONMENT=prod
+    env_file:
+      - .env.prod
+    environment:
+      - ENVIRONMENT=prod
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8013:8000"
+    volumes:
+      - ./media:/app/media
+      - ./staticfiles:/app/staticfiles
+
+volumes:
+  pravia_gemini_data_prod: {}

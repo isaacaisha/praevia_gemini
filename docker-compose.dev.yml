@@ -1,0 +1,35 @@
+# /home/siisi/praevia_gemini/docker-compose.dev.yml
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    env_file:
+      - .env.dev
+    environment:
+      - ENVIRONMENT=dev
+    volumes:
+      - praevia_gemini_data_dev:/var/lib/postgresql/data
+
+  praevia_gemini_dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./media:/app/media
+      - ./staticfiles:/app/staticfiles     # for collectstatic
+      - ./static:/app/static               # so runserver can see your SB-Admin assets
+    ports:
+      - "8009:8000"
+    depends_on:
+      - db
+    env_file:
+      - .env.dev
+    environment:
+      - ENVIRONMENT=dev
+
+volumes:
+  praevia_gemini_data_dev:
