@@ -90,7 +90,9 @@ class RootAPIView(APIView):
             },
             'api_root': {
                 'description': 'Main API entry point with all endpoints',
-                '3.praevia_api_url': f'🔥 {api_url} 🔥'
+                '3.praevia_api_url': f'🔥 {api_url} 🔥',
+                '4. superuser_login': request.build_absolute_uri('/admin/'),
+                '5. github_repo': 'https://github.com/isaacaisha/praevia_gemini'
             },
         }, status=status.HTTP_200_OK)
 

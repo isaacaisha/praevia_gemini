@@ -87,18 +87,18 @@ docker-compose -f docker-compose.dev.yml -p praevia_gemini_dev logs -f
 
 # Apply migrations or create superuser
 <!-- prod -->
-docker exec -it praevia_gemini_prod-praevia_gemini-1 python manage.py makemigrations
-docker exec -it praevia_gemini_prod-praevia_gemini-1 python manage.py migrate
-docker exec -it praevia_gemini_prod-praevia_gemini-1 python manage.py createsuperuser
-docker exec -it praevia_gemini_prod-praevia_gemini-1 python manage.py shell
-docker exec -it praevia_gemini_prod-praevia_gemini-1 bash
+docker exec -it praevia_gemini_prod-praevia_gemini_prod-1 python manage.py makemigrations
+docker exec -it praevia_gemini_prod-praevia_gemini_prod-1 python manage.py migrate
+docker exec -it praevia_gemini_prod-praevia_gemini_prod-1 python manage.py createsuperuser
+docker exec -it praevia_gemini_prod-praevia_gemini_prod-1 python manage.py shell
+docker exec -it praevia_gemini_prod-praevia_gemini_prod-1 bash
 
 <!-- dev -->
-docker exec -it praevia_gemini_dev-praevia_gemini-1 python manage.py makemigrations
-docker exec -it praevia_gemini_dev-praevia_gemini-1 python manage.py migrate
-docker exec -it praevia_gemini_dev-praevia_gemini-1 python manage.py createsuperuser
-docker exec -it praevia_gemini_dev-praevia_gemini-1 python manage.py shell
-docker exec -it praevia_gemini_dev-praevia_gemini-1 bash
+docker exec -it praevia_gemini_dev-praevia_gemini_dev-1 python manage.py makemigrations
+docker exec -it praevia_gemini_dev-praevia_gemini_dev-1 python manage.py migrate
+docker exec -it praevia_gemini_dev-praevia_gemini_dev-1 python manage.py createsuperuser
+docker exec -it praevia_gemini_dev-praevia_gemini_dev-1 python manage.py shell
+docker exec -it praevia_gemini_dev-praevia_gemini_dev-1 bash
 
 # ex. create a folder and set the permission
 mkdir -p media/profile_img

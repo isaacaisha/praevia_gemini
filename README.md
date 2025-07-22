@@ -37,10 +37,10 @@ praevia_gemini/
 ### 🗂️ Core Resources
 
 * `GET /praevia/gemini/api/users/`
-* `GET /praevia/gemini/api/dossiers/`
-* `GET /praevia/gemini/api/contentieux/`
-* `GET /praevia/gemini/api/audits/`
-* `GET /praevia/gemini/api/documents/`
+* `POST /praevia/gemini/api/dossiers/`
+* `POST /praevia/gemini/api/contentieux/`
+* `POST /praevia/gemini/api/audits/`
+* `POST /praevia/gemini/api/documents/`
 
 ### 📊 Dashboards
 
